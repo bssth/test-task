@@ -1,0 +1,495 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Unbounded:wght@400;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0c0f;
+    --surface: #131318;
+    --surface2: #1a1a22;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --accent: #5b8ef0;
+    --accent2: #a78bfa;
+    --gold: #f59e0b;
+    --green: #34d399;
+    --red: #f87171;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Unbounded', sans-serif;
+  }
+
+  body { background: var(--bg); color: var(--text); font-family: var(--mono); padding: 2rem 1.5rem 3rem; min-height: 100vh; }
+
+  .header { margin-bottom: 2.5rem; }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(91,142,240,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(91,142,240,0.25);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(18px, 4vw, 28px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .progress-bar-wrap {
+    margin: 1.5rem 0;
+    background: var(--surface2);
+    border-radius: 999px;
+    height: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .task-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+  .task:hover { border-color: var(--border2); background: var(--surface2); }
+  .task.done { border-color: rgba(52,211,153,0.2); background: rgba(52,211,153,0.04); }
+  .task.done .task-text { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(107,107,128,0.5); }
+  .task.done .task-num { color: var(--green); border-color: rgba(52,211,153,0.3); }
+
+  .task-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    min-width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+  }
+
+  .task-body { flex: 1; }
+
+  .task-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .task-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-right: 4px;
+  }
+  .tag-net { background: rgba(91,142,240,0.12); color: #7aa8f5; border: 1px solid rgba(91,142,240,0.2); }
+  .tag-redis { background: rgba(248,113,113,0.1); color: #fca5a5; border: 1px solid rgba(248,113,113,0.2); }
+  .tag-docker { background: rgba(56,189,248,0.1); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.2); }
+  .tag-test { background: rgba(167,139,250,0.1); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.2); }
+  .tag-api { background: rgba(52,211,153,0.1); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.2); }
+
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border2);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+  }
+  .task.done .check-icon {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .check-icon::after {
+    content: '';
+    display: none;
+    width: 5px;
+    height: 8px;
+    border: 2px solid #0c0c0f;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+  .task.done .check-icon::after { display: block; }
+
+  .bonus-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .star-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(245,158,11,0.1);
+    color: var(--gold);
+    border: 1px solid rgba(245,158,11,0.25);
+  }
+  .star { font-style: normal; }
+
+  .bonus-task {
+    border-color: rgba(245,158,11,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus-task::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), rgba(245,158,11,0.2));
+  }
+  .bonus-task:hover { border-color: rgba(245,158,11,0.25); }
+  .bonus-task .task-num { color: var(--gold); border-color: rgba(245,158,11,0.25); }
+  .bonus-task.done { border-color: rgba(52,211,153,0.2); background: rgba(52,211,153,0.04); }
+  .bonus-task.done::before { background: var(--green); }
+  .bonus-task.done .task-num { color: var(--green); border-color: rgba(52,211,153,0.3); }
+
+  .stars-row {
+    display: flex;
+    gap: 3px;
+    margin-top: 6px;
+  }
+  .star-pip {
+    width: 14px;
+    height: 14px;
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    background: rgba(245,158,11,0.2);
+    transition: background 0.2s;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .star-pip.active { background: var(--gold); }
+
+  .delivery {
+    margin-top: 2rem;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(91,142,240,0.2);
+    background: rgba(91,142,240,0.05);
+  }
+  .delivery-title {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .delivery-text {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .delivery-text strong { color: var(--text); font-weight: 500; }
+
+  .bottom-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+  }
+  .stat-label { font-size: 10px; color: var(--muted); margin-top: 3px; letter-spacing: 0.05em; }
+</style>
+
+<div class="header">
+  <div class="badge">test task · golang dev</div>
+  <h1>Static File<br><span>Rate Limiter</span></h1>
+  <p class="subtitle">Бэкенд-сервис на Go: отдача статики и ограничение запросов по подсети. Отмечай выполненные пункты по мере работы.</p>
+</div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="pbar" style="width: 0%"></div>
+</div>
+<div class="progress-label">
+  <span id="plabel">0 / 11 выполнено</span>
+  <span id="ppercent">0%</span>
+</div>
+
+<div class="section-title">Обязательные требования</div>
+
+<div class="task-list" id="required-list">
+  <div class="task" onclick="toggle(this)">
+    <div class="check-icon"></div>
+    <div class="task-num">01</div>
+    <div class="task-body">
+      <div class="task-text">Сервис написан на <code>Go</code>. Предпочтительно стандартная библиотека, без тяжёлых фреймворков</div>
+      <div><span class="task-tag tag-api">stdlib</span></div>
+    </div>
+  </div>
+  <div class="task" onclick="toggle(this)">
+    <div class="check-icon"></div>
+    <div class="task-num">02</div>
+    <div class="task-body">
+      <div class="task-text">Порт задаётся через флаг при запуске: <code>./server --port=8080</code></div>
+      <div><span class="task-tag tag-api">cli flag</span></div>
+    </div>
+  </div>
+  <div class="task" onclick="toggle(this)">
+    <div class="check-icon"></div>
+    <div class="task-num">03</div>
+    <div class="task-body">
+      <div class="task-text">Сервис отдаёт статические файлы из папки <code>./static</code></div>
+      <div><span class="task-tag tag-api">file server</span></div>
+    </div>
+  </div>
+  <div class="task" onclick="toggle(this)">
+    <div class="check-icon"></div>
+    <div class="task-num">04</div>
+    <div class="task-body">
+      <div class="task-text">При превышении лимита возвращается <code>429 Too Many Requests</code></div>
+      <div><span class="task-tag tag-net">http 429</span></div>
+    </div>
+  </div>
+  <div class="task" onclick="toggle(this)">
+    <div class="check-icon"></div>
+    <div class="task-num">05</div>
+    <div class="task-body">
+      <div class="task-text">Поддержка заголовка <code>X-Forwarded-For</code> для извлечения реального IP клиента</div>
+      <div><span class="task-tag tag-net">proxy header</span></div>
+    </div>
+  </div>
+  <div class="task" onclick="toggle(this)">
+    <div class="check-icon"></div>
+    <div class="task-num">06</div>
+    <div class="task-body">
+      <div class="task-text">Лимит: не более <strong>10 запросов в минуту</strong> с одной подсети</div>
+      <div><span class="task-tag tag-net">rate limit</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="bonus-header">
+  <div class="section-title" style="margin: 0; flex: 1">Бонусные задачи</div>
+  <div class="star-badge"><span class="star">★</span> со звёздочкой</div>
+</div>
+
+<div class="task-list" id="bonus-list">
+  <div class="task bonus-task" onclick="toggle(this)" data-stars="1">
+    <div class="check-icon"></div>
+    <div class="task-num">★1</div>
+    <div class="task-body">
+      <div class="task-text">Юнит-тесты для rate limiter и HTTP-хендлеров</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+        <span class="task-tag tag-test">testing</span>
+        <div class="stars-row" onclick="event.stopPropagation()">
+          <div class="star-pip" onclick="setStars(this.parentNode, 1)"></div>
+          <div class="star-pip" onclick="setStars(this.parentNode, 2)"></div>
+          <div class="star-pip" onclick="setStars(this.parentNode, 3)"></div>
+        </div>
+        <span style="font-size:10px;color:var(--muted)">сложность</span>
+      </div>
+    </div>
+  </div>
+  <div class="task bonus-task" onclick="toggle(this)" data-stars="2">
+    <div class="check-icon"></div>
+    <div class="task-num">★2</div>
+    <div class="task-body">
+      <div class="task-text">Хранение счётчиков в <code>Redis</code> вместо памяти — горизонтальное масштабирование</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+        <span class="task-tag tag-redis">redis</span>
+        <div class="stars-row" onclick="event.stopPropagation()">
+          <div class="star-pip active" onclick="setStars(this.parentNode, 1)"></div>
+          <div class="star-pip active" onclick="setStars(this.parentNode, 2)"></div>
+          <div class="star-pip" onclick="setStars(this.parentNode, 3)"></div>
+        </div>
+        <span style="font-size:10px;color:var(--muted)">сложность</span>
+      </div>
+    </div>
+  </div>
+  <div class="task bonus-task" onclick="toggle(this)" data-stars="3">
+    <div class="check-icon"></div>
+    <div class="task-num">★3</div>
+    <div class="task-body">
+      <div class="task-text">Поддержка нескольких подсетей с индивидуальными лимитами через конфиг</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+        <span class="task-tag tag-net">subnet rules</span>
+        <div class="stars-row" onclick="event.stopPropagation()">
+          <div class="star-pip active" onclick="setStars(this.parentNode, 1)"></div>
+          <div class="star-pip active" onclick="setStars(this.parentNode, 2)"></div>
+          <div class="star-pip active" onclick="setStars(this.parentNode, 3)"></div>
+        </div>
+        <span style="font-size:10px;color:var(--muted)">сложность</span>
+      </div>
+    </div>
+  </div>
+  <div class="task bonus-task" onclick="toggle(this)" data-stars="2">
+    <div class="check-icon"></div>
+    <div class="task-num">★4</div>
+    <div class="task-body">
+      <div class="task-text">Контейнеризация: <code>Dockerfile</code> + <code>docker-compose.yml</code> с Redis</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+        <span class="task-tag tag-docker">docker</span>
+        <div class="stars-row" onclick="event.stopPropagation()">
+          <div class="star-pip active" onclick="setStars(this.parentNode, 1)"></div>
+          <div class="star-pip active" onclick="setStars(this.parentNode, 2)"></div>
+          <div class="star-pip" onclick="setStars(this.parentNode, 3)"></div>
+        </div>
+        <span style="font-size:10px;color:var(--muted)">сложность</span>
+      </div>
+    </div>
+  </div>
+  <div class="task bonus-task" onclick="toggle(this)" data-stars="1">
+    <div class="check-icon"></div>
+    <div class="task-num">★5</div>
+    <div class="task-body">
+      <div class="task-text">Эндпоинт для сброса лимитов: <code>DELETE /limits/{subnet}</code></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+        <span class="task-tag tag-api">reset api</span>
+        <div class="stars-row" onclick="event.stopPropagation()">
+          <div class="star-pip active" onclick="setStars(this.parentNode, 1)"></div>
+          <div class="star-pip" onclick="setStars(this.parentNode, 2)"></div>
+          <div class="star-pip" onclick="setStars(this.parentNode, 3)"></div>
+        </div>
+        <span style="font-size:10px;color:var(--muted)">сложность</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="delivery">
+  <div class="delivery-title">Формат сдачи</div>
+  <div class="delivery-text">
+    Предпочтительно <strong>ссылка на GitHub-репозиторий</strong>.<br>
+    Альтернатива: архив с исходниками.<br>
+    Добавь <strong>README</strong> с описанием запуска и архитектурных решений — это плюс.
+  </div>
+</div>
+
+<div class="bottom-stats">
+  <div class="stat">
+    <span class="stat-num" id="stat-done">0</span>
+    <div class="stat-label">выполнено</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num" style="color:var(--gold)" id="stat-bonus">0</span>
+    <div class="stat-label">бонусов</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num" style="color:var(--accent)" id="stat-pct">0%</span>
+    <div class="stat-label">прогресс</div>
+  </div>
+</div>
+
+<script>
+  const TOTAL = 11;
+
+  function toggle(el) {
+    el.classList.toggle('done');
+    updateProgress();
+  }
+
+  function setStars(row, n) {
+    const pips = row.querySelectorAll('.star-pip');
+    pips.forEach((p, i) => p.classList.toggle('active', i < n));
+  }
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.task.done').length;
+    const bonusDone = document.querySelectorAll('.bonus-task.done').length;
+    const pct = Math.round(done / TOTAL * 100);
+    document.getElementById('pbar').style.width = pct + '%';
+    document.getElementById('plabel').textContent = done + ' / ' + TOTAL + ' выполнено';
+    document.getElementById('ppercent').textContent = pct + '%';
+    document.getElementById('stat-done').textContent = done;
+    document.getElementById('stat-bonus').textContent = bonusDone;
+    document.getElementById('stat-pct').textContent = pct + '%';
+  }
+</script>
