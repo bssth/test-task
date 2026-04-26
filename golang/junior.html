@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Golang Developer',
+      grade: 'Junior',
+      title: ['User Profile', 'API'],
+      subtitle: 'Простой HTTP-сервис на Go: in-memory CRUD пользователей с базовой валидацией. Цель — показать знакомство с net/http, JSON и структурой проекта.',
+      required: [
+        { text: 'Сервис написан на <code>Go</code> с использованием <code>net/http</code> из стандартной библиотеки', tags: [{cls:'api', label:'stdlib'}] },
+        { text: 'Порт задаётся через флаг: <code>./server --port=8080</code>', tags: [{cls:'api', label:'cli flag'}] },
+        { text: 'Эндпоинт <code>POST /users</code> создаёт пользователя в памяти и возвращает JSON с присвоенным <code>id</code>', tags: [{cls:'api', label:'rest'}] },
+        { text: 'Эндпоинт <code>GET /users/{id}</code> возвращает пользователя или <code>404</code>, если не найден', tags: [{cls:'api', label:'rest'}] },
+        { text: 'Валидация полей: <code>name</code> непустой, <code>email</code> в корректном формате — иначе <code>400</code> с описанием', tags: [{cls:'api', label:'validation'}] },
+        { text: 'Логирование каждого запроса: метод, путь, статус, длительность', tags: [{cls:'doc', label:'logging'}] },
+      ],
+      bonus: [
+        { text: 'Юнит-тесты для хендлеров через <code>httptest</code>', tags: [{cls:'test', label:'testing'}], stars: 1 },
+        { text: 'Эндпоинт <code>GET /users?limit&amp;offset</code> с пагинацией', tags: [{cls:'api', label:'pagination'}], stars: 1 },
+        { text: 'Сохранение состояния в JSON-файл при выходе и загрузка при старте', tags: [{cls:'db', label:'persistence'}], stars: 2 },
+        { text: '<code>Dockerfile</code> для сборки образа', tags: [{cls:'docker', label:'docker'}], stars: 1 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

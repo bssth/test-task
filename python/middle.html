@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Python Developer',
+      grade: 'Middle',
+      title: ['REST API', 'with FastAPI'],
+      subtitle: 'Полноценный REST-сервис на FastAPI: миграции, JWT-авторизация, роли, тесты с покрытием. Цель — увидеть умение собрать продакшен-готовый сервис.',
+      required: [
+        { text: '<code>FastAPI</code> + <code>SQLAlchemy 2.x</code> + <code>Alembic</code> миграции', tags: [{cls:'api', label:'fastapi'}] },
+        { text: 'CRUD для двух связанных сущностей (например, <code>User</code> ↔ <code>Post</code>)', tags: [{cls:'api', label:'crud'}] },
+        { text: 'JWT-авторизация и role-based permissions: <code>admin</code>/<code>user</code>', tags: [{cls:'sec', label:'auth'}] },
+        { text: 'Валидация запросов и сериализация через <code>Pydantic v2</code> схемы', tags: [{cls:'api', label:'pydantic'}] },
+        { text: '<code>PostgreSQL</code> в <code>docker-compose</code>, <code>.env.example</code> в репозитории', tags: [{cls:'docker', label:'docker'}] },
+        { text: 'Тесты на <code>pytest</code> с фикстурами БД, покрытие <strong>≥ 80%</strong>', tags: [{cls:'test', label:'pytest'}] },
+      ],
+      bonus: [
+        { text: 'Асинхронные фоновые задачи через <code>Celery</code> / <code>arq</code> / <code>FastAPI BackgroundTasks</code>', tags: [{cls:'arch', label:'background'}], stars: 2 },
+        { text: 'Кастомизация OpenAPI: теги, описания, примеры ответов', tags: [{cls:'doc', label:'openapi'}], stars: 1 },
+        { text: 'Rate limiting на эндпоинтах (<code>slowapi</code> или собственная реализация)', tags: [{cls:'net', label:'rate limit'}], stars: 2 },
+        { text: 'Интеграция <code>Sentry</code> и структурированные логи (<code>structlog</code>)', tags: [{cls:'doc', label:'observability'}], stars: 1 },
+        { text: 'CI на GitHub Actions: lint (<code>ruff</code>), type check (<code>mypy</code>), tests', tags: [{cls:'docker', label:'ci'}], stars: 1 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

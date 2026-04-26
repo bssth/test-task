@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Python Developer',
+      grade: 'Senior',
+      title: ['Streaming', 'Data Pipeline'],
+      subtitle: 'Поток данных на Python: получение из Kafka/API, трансформация, запись в хранилище. Идемпотентность, надёжность, наблюдаемость на продакшен-уровне.',
+      required: [
+        { text: 'ETL-пайплайн: <code>Airflow</code> / <code>Prefect</code> / <code>Dagster</code> или собственный оркестратор с обоснованием', tags: [{cls:'arch', label:'orchestration'}] },
+        { text: 'Источник: <code>Kafka</code> или внешний API; приёмник: <code>PostgreSQL</code> или <code>S3</code> в Parquet', tags: [{cls:'db', label:'storage'}] },
+        { text: 'Асинхронная обработка: <code>asyncio</code> + <code>aiohttp</code>, контролируемый concurrency, backpressure', tags: [{cls:'perf', label:'async'}] },
+        { text: 'Идемпотентность операций, retry с backoff, dead letter queue', tags: [{cls:'arch', label:'reliability'}] },
+        { text: 'Валидация схем: <code>Pydantic</code> / <code>Avro</code> / <code>protobuf</code>; политика обработки невалидных записей', tags: [{cls:'api', label:'schema'}] },
+        { text: 'Наблюдаемость: структурированные логи, метрики Prometheus, OpenTelemetry-трейсы', tags: [{cls:'doc', label:'observability'}] },
+      ],
+      bonus: [
+        { text: 'Backfill-механизм: пере-обработка исторических данных без дублей', tags: [{cls:'arch', label:'backfill'}], stars: 2 },
+        { text: 'Профилирование (<code>py-spy</code>/<code>scalene</code>) с отчётом по горячим точкам и оптимизациями', tags: [{cls:'perf', label:'profiling'}], stars: 2 },
+        { text: 'IaC деплой: <code>Terraform</code> или <code>Pulumi</code> с описанием ресурсов', tags: [{cls:'docker', label:'iac'}], stars: 3 },
+        { text: 'Data Quality чеки на <code>Great Expectations</code> / <code>Soda</code>', tags: [{cls:'test', label:'data quality'}], stars: 1 },
+        { text: 'Бенчмарк throughput на синтетической нагрузке + отчёт', tags: [{cls:'perf', label:'load test'}], stars: 2 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

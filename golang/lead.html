@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Golang Developer',
+      grade: 'Team Lead',
+      title: ['Architecture &', 'Team Playbook'],
+      subtitle: 'Тимлид-задание: меньше кодирования, больше системного мышления. Архитектурный обзор, план миграции, процессы команды и оценка инженерной зрелости.',
+      required: [
+        { text: 'Code review предоставленного Go-сервиса (~2k строк): отчёт с рангом проблем (blocker / major / minor) и обоснованием', tags: [{cls:'doc', label:'code review'}] },
+        { text: 'Целевая архитектура: <code>C4</code>-диаграммы (Context + Containers), границы сервисов, контракты, схема данных', tags: [{cls:'arch', label:'c4'}] },
+        { text: 'План миграции монолит → сервисы: фазы, метрики успеха, точки отката, риски', tags: [{cls:'arch', label:'migration'}] },
+        { text: 'SLO/SLI/SLA для целевого сервиса: error budget, политика расходования, эскалация', tags: [{cls:'doc', label:'reliability'}] },
+        { text: 'CI/CD пайплайн: build, test, security scan, canary/blue-green deploy, автоматический rollback', tags: [{cls:'docker', label:'ci/cd'}] },
+        { text: 'Skill matrix команды + план найма: грейды, интервью-конвейер, вопросы для Mid/Sr', tags: [{cls:'doc', label:'people'}] },
+      ],
+      bonus: [
+        { text: 'Оценка стоимости инфраструктуры по окружениям (dev/stage/prod) с обоснованием', tags: [{cls:'doc', label:'finops'}], stars: 2 },
+        { text: 'Disaster recovery runbook: RTO/RPO, сценарии отказов, план восстановления', tags: [{cls:'doc', label:'dr'}], stars: 2 },
+        { text: 'Onboarding playbook для нового разработчика на 30/60/90 дней', tags: [{cls:'doc', label:'onboarding'}], stars: 1 },
+        { text: 'Tech radar: adopt / trial / assess / hold по библиотекам, тулзам, практикам', tags: [{cls:'doc', label:'radar'}], stars: 2 },
+        { text: 'ADR (Architecture Decision Record) на 3 ключевых решения с альтернативами и trade-offs', tags: [{cls:'arch', label:'adr'}], stars: 1 },
+      ],
+      delivery: 'Документы в формате <strong>Markdown</strong> в одном репозитории, диаграммы — <code>mermaid</code> или <code>structurizr</code>.<br>Презентация решений на 30-минутной сессии — приветствуется.',
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

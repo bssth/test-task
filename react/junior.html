@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'React Frontend Developer',
+      grade: 'Junior',
+      title: ['Movie Search', 'App'],
+      subtitle: 'Простое SPA на React: поиск фильмов через публичное API, список и страница деталей. Цель — увидеть базу: компоненты, состояние, асинхронные запросы, маршрутизация.',
+      required: [
+        { text: 'Проект на <code>React 18+</code> и <code>Vite</code> (или CRA)', tags: [{cls:'ui', label:'react'}] },
+        { text: 'Поле поиска и список результатов из публичного API (например, <code>OMDb</code> или <code>TMDB</code>)', tags: [{cls:'api', label:'fetch'}] },
+        { text: 'Карточка фильма: постер, название, год', tags: [{cls:'ui', label:'ui'}] },
+        { text: 'Состояния <code>loading</code>, <code>error</code>, <code>empty</code> отрисованы отдельно', tags: [{cls:'ui', label:'states'}] },
+        { text: 'Клик по карточке открывает страницу деталей через <code>react-router-dom</code>', tags: [{cls:'ui', label:'routing'}] },
+        { text: 'Адаптивная вёрстка: ок на мобильном и десктопе', tags: [{cls:'ui', label:'responsive'}] },
+      ],
+      bonus: [
+        { text: 'Избранное в <code>localStorage</code> с возможностью удаления', tags: [{cls:'ui', label:'favorites'}], stars: 1 },
+        { text: 'Дебаунс ввода поиска (300мс)', tags: [{cls:'perf', label:'debounce'}], stars: 1 },
+        { text: 'Пагинация или infinite scroll', tags: [{cls:'ui', label:'pagination'}], stars: 2 },
+        { text: 'Базовые тесты на <code>React Testing Library</code>', tags: [{cls:'test', label:'testing'}], stars: 2 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

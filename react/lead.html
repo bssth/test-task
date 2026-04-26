@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'React Frontend Developer',
+      grade: 'Team Lead',
+      title: ['Frontend Platform', 'Strategy'],
+      subtitle: 'Стратегия фронтенд-платформы: дизайн-система, инструменты, процессы, найм. Меньше кода, больше архитектурных и продуктовых решений.',
+      required: [
+        { text: 'Предложение по дизайн-системе: монорепо (<code>turborepo</code>/<code>nx</code>), структура пакетов, версионирование', tags: [{cls:'arch', label:'design system'}] },
+        { text: 'Система токенов: цвета, типографика, spacing — единый источник истины (Style Dictionary / CSS vars)', tags: [{cls:'ui', label:'tokens'}] },
+        { text: 'CI/CD: preview-деплои на PR, визуальная регрессия (<code>Chromatic</code>/<code>Percy</code>), автотесты', tags: [{cls:'docker', label:'ci/cd'}] },
+        { text: 'Code review guide и конвенции: что блокирует merge, что — комментарий, что — желание', tags: [{cls:'doc', label:'process'}] },
+        { text: 'Performance budgets и мониторинг Web Vitals на проде, алерты при деградации', tags: [{cls:'perf', label:'web vitals'}] },
+        { text: 'Процесс найма фронтенд-инженеров: лестница грейдов, этапы интервью, скоринг', tags: [{cls:'doc', label:'hiring'}] },
+      ],
+      bonus: [
+        { text: 'План миграции legacy-стека (например, <code>CRA + Redux</code> → <code>Vite + RTK Query</code>) с фазами и метриками', tags: [{cls:'arch', label:'migration'}], stars: 3 },
+        { text: 'Внутренний Storybook как живая документация: деплой, аудит покрытия компонентов', tags: [{cls:'doc', label:'storybook'}], stars: 1 },
+        { text: 'Программа менторства и роста: 1-on-1, IDP, ревью развития', tags: [{cls:'doc', label:'people'}], stars: 1 },
+        { text: 'Интеграция feature-flag платформы (<code>LaunchDarkly</code>/<code>GrowthBook</code>): архитектура, правила, очистка', tags: [{cls:'arch', label:'flags'}], stars: 2 },
+        { text: 'A11y-стратегия: уровень соответствия, тулинг, обучение команды', tags: [{cls:'ui', label:'a11y'}], stars: 2 },
+      ],
+      delivery: 'Документы в <strong>Markdown</strong> с диаграммами (<code>mermaid</code>).<br>Презентация решений на 30-минутной сессии — приветствуется.',
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

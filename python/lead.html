@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Python Developer',
+      grade: 'Team Lead',
+      title: ['Platform', 'Architecture'],
+      subtitle: 'Тимлид-задание для Python: архитектурный обзор сервиса, рефакторинг-стратегия, процессы тестирования и качества, план развития команды.',
+      required: [
+        { text: 'Code review предоставленного Python-сервиса (Django/FastAPI, ~3k строк): отчёт по проблемам с приоритетами', tags: [{cls:'doc', label:'code review'}] },
+        { text: 'Целевая архитектура: разделение слоёв (domain/application/infra), DI, границы модулей', tags: [{cls:'arch', label:'architecture'}] },
+        { text: 'Рефакторинг-roadmap: монолит → модульный монолит → сервисы; критерии перехода', tags: [{cls:'arch', label:'refactor'}] },
+        { text: 'Стратегия тестирования: unit / integration / contract / e2e / load — пирамида и владельцы', tags: [{cls:'test', label:'strategy'}] },
+        { text: 'CI/CD на <code>GitHub Actions</code>: матрица версий Python, кэши, security scan, деплой', tags: [{cls:'docker', label:'ci/cd'}] },
+        { text: 'Skill matrix команды + план найма Mid/Sr Python-инженеров', tags: [{cls:'doc', label:'people'}] },
+      ],
+      bonus: [
+        { text: 'ADR-шаблон и 3 примера решений с альтернативами и trade-offs', tags: [{cls:'arch', label:'adr'}], stars: 1 },
+        { text: 'SRE-практики: SLO/SLI, error budget, on-call rotation, postmortem template', tags: [{cls:'doc', label:'sre'}], stars: 2 },
+        { text: 'Фреймворк приоритизации tech debt: оценка cost vs impact, бюджет на квартал', tags: [{cls:'doc', label:'tech debt'}], stars: 2 },
+        { text: 'Onboarding playbook 30/60/90 дней с чек-листами и mentor pairing', tags: [{cls:'doc', label:'onboarding'}], stars: 1 },
+        { text: 'Tooling-стандарт: <code>ruff</code>, <code>mypy</code>, <code>pre-commit</code>, <code>uv</code>/<code>poetry</code> с обоснованием', tags: [{cls:'doc', label:'tooling'}], stars: 1 },
+      ],
+      delivery: 'Документы в <strong>Markdown</strong> в одном репозитории, диаграммы — <code>mermaid</code>.<br>Презентация решений на 30-минутной сессии — приветствуется.',
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

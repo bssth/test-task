@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Golang Developer',
+      grade: 'Middle',
+      title: ['Static File', 'Rate Limiter'],
+      subtitle: 'Бэкенд-сервис на Go: отдача статики и ограничение запросов по подсети. Отмечай выполненные пункты по мере работы.',
+      required: [
+        { text: 'Сервис написан на <code>Go</code>. Предпочтительно стандартная библиотека, без тяжёлых фреймворков', tags: [{cls:'api', label:'stdlib'}] },
+        { text: 'Порт задаётся через флаг при запуске: <code>./server --port=8080</code>', tags: [{cls:'api', label:'cli flag'}] },
+        { text: 'Сервис отдаёт статические файлы из папки <code>./static</code>', tags: [{cls:'api', label:'file server'}] },
+        { text: 'При превышении лимита возвращается <code>429 Too Many Requests</code>', tags: [{cls:'net', label:'http 429'}] },
+        { text: 'Поддержка заголовка <code>X-Forwarded-For</code> для извлечения реального IP клиента', tags: [{cls:'net', label:'proxy header'}] },
+        { text: 'Лимит: не более <strong>10 запросов в минуту</strong> с одной подсети', tags: [{cls:'net', label:'rate limit'}] },
+      ],
+      bonus: [
+        { text: 'Юнит-тесты для rate limiter и HTTP-хендлеров', tags: [{cls:'test', label:'testing'}], stars: 1 },
+        { text: 'Хранение счётчиков в <code>Redis</code> вместо памяти — горизонтальное масштабирование', tags: [{cls:'redis', label:'redis'}], stars: 2 },
+        { text: 'Поддержка нескольких подсетей с индивидуальными лимитами через конфиг', tags: [{cls:'net', label:'subnet rules'}], stars: 3 },
+        { text: 'Контейнеризация: <code>Dockerfile</code> + <code>docker-compose.yml</code> с Redis', tags: [{cls:'docker', label:'docker'}], stars: 2 },
+        { text: 'Эндпоинт для сброса лимитов: <code>DELETE /limits/{subnet}</code>', tags: [{cls:'api', label:'reset api'}], stars: 1 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

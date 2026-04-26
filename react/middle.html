@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'React Frontend Developer',
+      grade: 'Middle',
+      title: ['Admin', 'Dashboard'],
+      subtitle: 'Админ-панель на React + TypeScript: аутентификация, защищённые маршруты, CRUD-таблица с серверной пагинацией, формы с валидацией и графики.',
+      required: [
+        { text: '<code>React 18+</code> с <code>TypeScript</code>, строгий <code>tsconfig</code> (<code>strict: true</code>)', tags: [{cls:'ui', label:'typescript'}] },
+        { text: 'Auth-флоу: страница логина, JWT в storage, <code>ProtectedRoute</code>, авто-логаут по 401', tags: [{cls:'sec', label:'auth'}] },
+        { text: 'CRUD-таблица сущности: серверная пагинация, сортировка, фильтры в URL-параметрах', tags: [{cls:'ui', label:'table'}] },
+        { text: 'Форма создания/редактирования с валидацией через <code>react-hook-form</code> + <code>zod</code> или <code>yup</code>', tags: [{cls:'ui', label:'forms'}] },
+        { text: 'Глобальное состояние через <code>Zustand</code> / <code>Redux Toolkit</code> / Context — на выбор, обоснование в README', tags: [{cls:'arch', label:'state'}] },
+        { text: 'Дашборд с графиками (<code>recharts</code> / <code>chart.js</code>): минимум 2 разных типа диаграмм', tags: [{cls:'ui', label:'charts'}] },
+      ],
+      bonus: [
+        { text: 'Тёмная тема с переключателем и сохранением выбора', tags: [{cls:'ui', label:'dark mode'}], stars: 1 },
+        { text: 'E2E-тесты на <code>Playwright</code> или <code>Cypress</code>: smoke-сценарий логина и CRUD', tags: [{cls:'test', label:'e2e'}], stars: 2 },
+        { text: 'Storybook для ключевых компонентов с состояниями и controls', tags: [{cls:'doc', label:'storybook'}], stars: 2 },
+        { text: 'i18n: переключение между двумя языками (<code>react-i18next</code> / <code>formatjs</code>)', tags: [{cls:'ui', label:'i18n'}], stars: 1 },
+        { text: 'Оптимистичные обновления и инвалидация кэша через <code>TanStack Query</code> или <code>SWR</code>', tags: [{cls:'perf', label:'caching'}], stars: 2 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

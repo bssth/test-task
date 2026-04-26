@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Python Developer',
+      grade: 'Junior',
+      title: ['Log Analyzer', 'CLI'],
+      subtitle: 'CLI-утилита на Python: парсинг логов, фильтрация и агрегация. Цель — увидеть базу: структура проекта, работа с файлами, регулярки, тесты.',
+      required: [
+        { text: 'Python 3.10+, CLI через <code>argparse</code> (без сторонних фреймворков)', tags: [{cls:'api', label:'cli'}] },
+        { text: 'Чтение лог-файла построчно, парсинг в структуру (timestamp, level, message)', tags: [{cls:'api', label:'parsing'}] },
+        { text: 'Фильтрация по диапазону дат и уровню: <code>--from</code>, <code>--to</code>, <code>--level</code>', tags: [{cls:'api', label:'filters'}] },
+        { text: 'Агрегации: количество записей по уровням, топ-N сообщений об ошибках', tags: [{cls:'api', label:'aggregation'}] },
+        { text: 'Форматы вывода: <code>--format json|csv|table</code>', tags: [{cls:'ui', label:'output'}] },
+        { text: 'Юнит-тесты на <code>pytest</code> для парсера и фильтров', tags: [{cls:'test', label:'pytest'}] },
+      ],
+      bonus: [
+        { text: 'Watch-режим: чтение из файла как <code>tail -f</code>', tags: [{cls:'api', label:'watch'}], stars: 2 },
+        { text: 'Цветной вывод через <code>rich</code> или <code>colorama</code>', tags: [{cls:'ui', label:'colors'}], stars: 1 },
+        { text: 'Установка через <code>pip</code>: <code>pyproject.toml</code> с entry point', tags: [{cls:'doc', label:'packaging'}], stars: 2 },
+        { text: 'Поддержка нескольких форматов лога (apache, nginx, json) с автодетектом', tags: [{cls:'api', label:'multi-format'}], stars: 2 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

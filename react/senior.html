@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'React Frontend Developer',
+      grade: 'Senior',
+      title: ['Real-Time', 'Collab Editor'],
+      subtitle: 'Совместный редактор с реал-тайм синхронизацией: WebSocket / CRDT, продуманная архитектура, кастомные хуки, производительность и доступность.',
+      required: [
+        { text: 'Архитектура с разделением: ядро редактора, транспорт, UI, состояние — слабая связанность', tags: [{cls:'arch', label:'architecture'}] },
+        { text: 'Реал-тайм синхронизация: <code>WebSocket</code> + CRDT (<code>Yjs</code> / <code>Automerge</code>) или собственная OT-логика', tags: [{cls:'net', label:'realtime'}] },
+        { text: 'Кастомные хуки для управления соединением: реконнект, heartbeat, status', tags: [{cls:'arch', label:'hooks'}] },
+        { text: 'Оптимистичные обновления и разрешение конфликтов между клиентами', tags: [{cls:'perf', label:'optimistic'}] },
+        { text: 'Производительность: виртуализация длинных списков, мемоизация, профилирование <code>React DevTools Profiler</code>', tags: [{cls:'perf', label:'performance'}] },
+        { text: 'Доступность WCAG 2.1 AA: ARIA-роли, клавиатурная навигация, фокус-менеджмент', tags: [{cls:'ui', label:'a11y'}] },
+      ],
+      bonus: [
+        { text: 'SSR/SSG через <code>Next.js</code> или <code>Remix</code> с гидратацией', tags: [{cls:'arch', label:'ssr'}], stars: 2 },
+        { text: 'Service Worker: оффлайн-режим и фоновая синхронизация изменений', tags: [{cls:'net', label:'offline'}], stars: 3 },
+        { text: 'Анимации интерфейса через <code>Framer Motion</code> с уважением <code>prefers-reduced-motion</code>', tags: [{cls:'ui', label:'animation'}], stars: 1 },
+        { text: 'Bundle analysis, code splitting по роутам, отчёт по бандлу в README', tags: [{cls:'perf', label:'bundle'}], stars: 2 },
+        { text: 'Web Workers для тяжёлых вычислений (diff, парсинг)', tags: [{cls:'perf', label:'workers'}], stars: 2 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>

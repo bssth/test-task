@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.TASK_DATA = {
+      role: 'Golang Developer',
+      grade: 'Senior',
+      title: ['Distributed', 'Job Queue'],
+      subtitle: 'Распределённая очередь задач на Go: пул воркеров, надёжная доставка, наблюдаемость и graceful shutdown. Цель — увидеть зрелую инженерную работу и архитектурные решения.',
+      required: [
+        { text: 'Пул воркеров с настраиваемой конкурентностью через флаг или конфиг', tags: [{cls:'arch', label:'concurrency'}] },
+        { text: 'Интерфейс <code>Task</code>, регистрация хендлеров по типу задачи', tags: [{cls:'arch', label:'api'}] },
+        { text: 'Персистентная очередь: <code>Redis Streams</code> или <code>PostgreSQL</code> с <code>SELECT FOR UPDATE SKIP LOCKED</code>', tags: [{cls:'db', label:'persistence'}] },
+        { text: 'Retry с экспоненциальным backoff и максимальным числом попыток', tags: [{cls:'net', label:'retry'}] },
+        { text: 'Graceful shutdown: <code>context.Context</code>, дренаж очереди, корректное завершение in-flight задач', tags: [{cls:'arch', label:'lifecycle'}] },
+        { text: 'Наблюдаемость: <code>/metrics</code> для Prometheus, структурированные логи (<code>slog</code>/<code>zap</code>), OpenTelemetry-трейсы', tags: [{cls:'doc', label:'observability'}] },
+      ],
+      bonus: [
+        { text: 'Dead letter queue для задач, исчерпавших retry', tags: [{cls:'db', label:'dlq'}], stars: 2 },
+        { text: 'Приоритетные очереди и quotas по типам задач', tags: [{cls:'arch', label:'priority'}], stars: 2 },
+        { text: 'Бенчмарки и нагрузочный тест (k6/vegeta) с отчётом', tags: [{cls:'perf', label:'load test'}], stars: 3 },
+        { text: 'Admin-API для просмотра очереди, переключения паузы, переотправки задач', tags: [{cls:'api', label:'admin'}], stars: 1 },
+        { text: 'Helm chart или <code>docker-compose</code> с инструкцией по горизонтальному масштабированию', tags: [{cls:'docker', label:'deploy'}], stars: 2 },
+      ],
+    };
+  </script>
+  <script src="../assets/render.js"></script>
+</body>
+</html>
